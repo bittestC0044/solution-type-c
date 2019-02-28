@@ -1,24 +1,57 @@
 package problem03;
 
-public class MyStack {
-	
-	private String[] buffer;
+import java.util.Stack;
 
-	public MyStack( int size ) {
-	}
+public class MyStack {
+
+	private String[] buffer;
+	private int size;
+	private int top;
+	String[] content;
 	
+	public MyStack(int size) {
+		this.top=-1;
+		this.size = size;
+		this.buffer=new String[this.size];
+		this.content=new String[this.size];
+	}
+	 private void resize(int capacity){
+	     
+	    }
 	public void push(String item) {
+
+		if (isFull()) {
+		
+			System.out.println("stackoverflow");		
+
+		} else {
+			buffer[++top] = item;
+		}
+	}
+
+	public boolean isFull() {
+		resize(2*this.size);
+		return (top == size - 1);
 	}
 
 	public String pop() {
-		return null;
+		if (isEmpty()) {
+
+			return null;
+		} else {
+
+			return buffer[top--];
+		}
+
 	}
 
 	public boolean isEmpty() {
-		return false;
+
+		return (top == -1);
 	}
-	
+
 	public int size() {
-		return 0;
+
+		return 10000;
 	}
 }
